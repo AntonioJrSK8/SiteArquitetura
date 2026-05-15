@@ -38,6 +38,7 @@ body {
   color: var(--charcoal);
   background: var(--cream);
   overflow-x: hidden;
+  padding-bottom: 5rem;
 }
 
 img {
@@ -80,7 +81,43 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--cream-dark);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.lang-switch__btn {
+  border: none;
+  background: transparent;
+  color: var(--slate);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.lang-switch__btn.active {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.lang-switch__btn:hover:not(.active) {
+  color: var(--copper);
 }
 
 .logo {
@@ -541,6 +578,46 @@ ul {
   min-height: 200px;
 }
 
+.gallery__hint {
+  font-size: 0.85rem;
+  color: var(--slate);
+  margin: -1.5rem 0 1.5rem;
+  font-style: italic;
+}
+
+.gallery__item[data-lightbox] {
+  cursor: zoom-in;
+  position: relative;
+}
+
+.gallery__item[data-lightbox]:hover img {
+  transform: scale(1.04);
+}
+
+.gallery__zoom {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(45, 45, 45, 0.75);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.gallery__item[data-lightbox]:hover .gallery__zoom,
+.gallery__item[data-lightbox]:focus-visible .gallery__zoom {
+  opacity: 1;
+}
+
 /* —— About —— */
 .about {
   display: grid;
@@ -799,6 +876,137 @@ ul {
   line-height: 1.7;
 }
 
+/* —— WhatsApp flutuante —— */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #25d366;
+  color: var(--white);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.55);
+  color: var(--white);
+}
+
+.whatsapp-float svg {
+  flex-shrink: 0;
+}
+
+/* —— Lightbox —— */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox__figure {
+  position: relative;
+  z-index: 1;
+  max-width: min(1100px, 96vw);
+  max-height: 90vh;
+  margin: 0;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-hover);
+  object-fit: contain;
+}
+
+.lightbox__caption {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  padding: 0 1rem;
+}
+
+.lightbox__close,
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  z-index: 2;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.lightbox__close:hover,
+.lightbox__prev:hover,
+.lightbox__next:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox__close {
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.75rem;
+}
+
+.lightbox__prev,
+.lightbox__next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.lightbox__prev {
+  left: 1rem;
+}
+
+.lightbox__next {
+  right: 1rem;
+}
+
 /* —— Animations —— */
 .reveal {
   opacity: 0;
@@ -905,6 +1113,17 @@ ul {
   .menu-toggle {
     display: flex;
     z-index: 101;
+  }
+
+  .whatsapp-float__text {
+    display: none;
+  }
+
+  .whatsapp-float {
+    padding: 0.95rem;
+    border-radius: 50%;
+    bottom: 1.25rem;
+    right: 1.25rem;
   }
 
   .menu-toggle.active span:nth-child(1) {
