@@ -1,98 +1,12 @@
 (function () {
-  const WA_URL = "https://wa.me/559885375067";
   const header = document.querySelector(".header");
   const menuToggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
   const modal = document.getElementById("project-modal");
   const lightbox = document.getElementById("lightbox");
-  const langButtons = document.querySelectorAll("[data-lang]");
 
-  let currentLang = localStorage.getItem("lang") || "pt";
   let lightboxIndex = 0;
   let lightboxImages = [];
-
-  function t(key) {
-    const keys = key.split(".");
-    let val = window.SiteI18n?.[currentLang];
-    for (const k of keys) val = val?.[k];
-    return val ?? key;
-  }
-
-  function applyLanguage(lang) {
-    if (!window.SiteI18n?.[lang]) return;
-    currentLang = lang;
-    localStorage.setItem("lang", lang);
-    document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
-
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      el.textContent = t(el.dataset.i18n);
-    });
-
-    document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-      el.innerHTML = t(el.dataset.i18nHtml);
-    });
-
-    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
-      el.alt = t(el.dataset.i18nAlt);
-    });
-
-    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
-      el.setAttribute("aria-label", t(el.dataset.i18nAria));
-    });
-
-    document.title = t("meta.title");
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = t("meta.description");
-
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogTitle) ogTitle.content = t("og.title");
-    if (ogDesc) ogDesc.content = t("og.description");
-
-    document.querySelectorAll(".project-card").forEach((card, i) => {
-      const n = i + 1;
-      const tag = card.querySelector(".project-card__tag");
-      const title = card.querySelector(".project-card__overlay h3");
-      if (tag) tag.textContent = t(`portfolio.p${n}Tag`);
-      if (title) title.textContent = t(`portfolio.p${n}Title`);
-      card.dataset.tag = t(`portfolio.p${n}Tag`);
-      card.dataset.title = t(`portfolio.p${n}Title`);
-      card.dataset.description = t(`portfolio.p${n}Desc`);
-    });
-
-    const ctaWa = document.querySelector("[data-wa-cta]");
-    if (ctaWa) {
-      ctaWa.href = `${WA_URL}?text=${encodeURIComponent(t("cta.waText"))}`;
-    }
-
-    langButtons.forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.lang === lang);
-      btn.setAttribute("aria-pressed", btn.dataset.lang === lang ? "true" : "false");
-    });
-
-    const modalClose = modal?.querySelector(".modal__close");
-    if (modalClose) modalClose.setAttribute("aria-label", t("modal.close"));
-
-    const lbClose = lightbox?.querySelector(".lightbox__close");
-    const lbPrev = lightbox?.querySelector(".lightbox__prev");
-    const lbNext = lightbox?.querySelector(".lightbox__next");
-    if (lbClose) lbClose.setAttribute("aria-label", t("lightbox.close"));
-    if (lbPrev) lbPrev.setAttribute("aria-label", t("lightbox.prev"));
-    if (lbNext) lbNext.setAttribute("aria-label", t("lightbox.next"));
-
-    const waFloat = document.querySelector(".whatsapp-float");
-    if (waFloat) {
-      waFloat.setAttribute("aria-label", t("whatsapp.aria"));
-      waFloat.querySelector(".whatsapp-float__text") &&
-        (waFloat.querySelector(".whatsapp-float__text").textContent = t("whatsapp.label"));
-    }
-  }
-
-  langButtons.forEach((btn) => {
-    btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
-  });
-
-  applyLanguage(currentLang);
 
   /* Scroll header */
   window.addEventListener("scroll", () => {
