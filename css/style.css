@@ -777,12 +777,14 @@ ul {
 
 .modal__content {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--cream);
   border-radius: 20px;
-  max-width: 900px;
+  max-width: 920px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: 92vh;
+  overflow: hidden;
   transform: translateY(24px) scale(0.98);
   transition: transform var(--transition);
 }
@@ -793,9 +795,9 @@ ul {
 
 .modal__close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 2;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -808,21 +810,39 @@ ul {
   align-items: center;
   justify-content: center;
   transition: background var(--transition);
+  box-shadow: var(--shadow);
 }
 
 .modal__close:hover {
   background: var(--copper);
 }
 
+.modal__image {
+  flex: 0 0 auto;
+  width: 100%;
+  background: #3a3a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  max-height: min(68vh, 620px);
+}
+
 .modal__image img {
   width: 100%;
-  max-height: 45vh;
-  object-fit: cover;
-  border-radius: 20px 20px 0 0;
+  height: auto;
+  max-height: min(68vh, 620px);
+  object-fit: contain;
+  object-position: center center;
+  display: block;
 }
 
 .modal__body {
-  padding: 2rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1.5rem 2rem 2rem;
 }
 
 .modal__body .section__label {
