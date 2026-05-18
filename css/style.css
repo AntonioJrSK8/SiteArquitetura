@@ -624,6 +624,10 @@ ul {
   object-fit: contain;
 }
 
+.video-card__brand {
+  display: none;
+}
+
 .video-card {
   width: 100%;
   max-width: 380px;
@@ -674,6 +678,39 @@ ul {
   font-size: 0.95rem;
   color: var(--slate);
   line-height: 1.6;
+}
+
+@media (min-width: 720px) {
+  .videos__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .video-card--landscape {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    width: 100%;
+  }
+
+  .video-card--landscape .video-card__brand {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1.5rem 2rem;
+    min-height: 12rem;
+    background: var(--cream-dark);
+    border-radius: var(--radius);
+  }
+
+  .video-card--landscape .video-card__brand img {
+    width: auto;
+    max-width: min(240px, 75%);
+    max-height: min(280px, 100%);
+    object-fit: contain;
+  }
 }
 
 /* —— About —— */
