@@ -880,6 +880,24 @@ ul {
   margin-top: 0.5rem;
 }
 
+.footer__links {
+  margin-top: 0.75rem;
+}
+
+.footer__links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.footer__links a:hover {
+  color: var(--copper);
+}
+
 /* —— Modal —— */
 .modal {
   position: fixed;

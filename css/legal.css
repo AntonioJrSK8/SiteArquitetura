@@ -1,0 +1,133 @@
+/* Páginas legais — Política de privacidade */
+
+:root {
+  --cream: #f2efe9;
+  --cream-dark: #e8e3db;
+  --charcoal: #2d2d2d;
+  --slate: #5c6b6f;
+  --copper: #a67c52;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.legal-page {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--charcoal);
+  background: var(--cream);
+}
+
+.container {
+  width: min(720px, 92vw);
+  margin-inline: auto;
+}
+
+a {
+  color: var(--copper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.legal-header {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--cream-dark);
+  background: rgba(242, 239, 233, 0.95);
+}
+
+.legal-header__inner {
+  width: min(720px, 92vw);
+  margin-inline: auto;
+}
+
+.legal-header__back {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-decoration: none;
+}
+
+.legal-header__back:hover {
+  color: var(--copper);
+  opacity: 1;
+}
+
+.legal-main {
+  padding: 2.5rem 0 3rem;
+}
+
+.legal-main h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.legal-updated {
+  font-size: 0.85rem;
+  color: var(--slate);
+  margin-bottom: 2rem;
+}
+
+.legal-main section {
+  margin-bottom: 2rem;
+}
+
+.legal-main h2 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--charcoal);
+}
+
+.legal-main p {
+  margin-bottom: 0.85rem;
+  color: var(--charcoal);
+}
+
+.legal-main ul {
+  margin: 0 0 1rem 1.25rem;
+  list-style: disc;
+}
+
+.legal-main li {
+  margin-bottom: 0.4rem;
+  color: var(--slate);
+}
+
+.legal-main li strong {
+  color: var(--charcoal);
+}
+
+.legal-footer {
+  padding: 1.5rem 0 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--slate);
+  border-top: 1px solid var(--cream-dark);
+}
+
+.legal-footer p + p {
+  margin-top: 0.5rem;
+}
+
+.legal-footer a {
+  text-decoration: none;
+  font-weight: 500;
+}
