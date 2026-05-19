@@ -1,0 +1,202 @@
+/* Anúncio — Avaliação gratuita do ambiente (compartilhável) */
+
+:root {
+  --cream: #f2efe9;
+  --charcoal: #2d2d2d;
+  --copper: #a67c52;
+  --copper-light: #c9a882;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  background: #1a1a1a;
+}
+
+.ad {
+  width: min(1080px, 100%);
+  max-width: 1080px;
+  aspect-ratio: 4 / 5;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(160deg, var(--charcoal) 0%, #3d3530 45%, var(--charcoal) 100%);
+  color: var(--cream);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.ad__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(166, 124, 82, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(201, 168, 130, 0.15) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.ad__header,
+.ad__body,
+.ad__footer {
+  position: relative;
+  z-index: 1;
+}
+
+.ad__header {
+  text-align: center;
+}
+
+.ad__logo {
+  width: 72px;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.ad__brand {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--copper-light);
+  margin-top: 0.5rem;
+  line-height: 1.1;
+}
+
+.ad__tagline {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 233, 0.7);
+  margin-top: 0.35rem;
+}
+
+.ad__body {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.ad__badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: var(--copper-light);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.ad__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.ad__subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.65;
+  color: rgba(242, 239, 233, 0.88);
+  max-width: 28ch;
+  margin-inline: auto;
+}
+
+.ad__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.ad__list li {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper-light);
+}
+
+.ad__list li::before {
+  content: "◆ ";
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+.ad__footer {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(201, 168, 130, 0.3);
+}
+
+.ad__cta-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.ad__phone {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: var(--copper-light);
+  letter-spacing: 0.04em;
+}
+
+.ad__insta,
+.ad__city {
+  font-size: 0.75rem;
+  color: rgba(242, 239, 233, 0.65);
+  margin-top: 0.35rem;
+}
+
+.ad-hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.ad-hint a {
+  color: var(--copper-light);
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .ad-hint {
+    display: none;
+  }
+
+  .ad {
+    box-shadow: none;
+    max-width: 100%;
+  }
+}
