@@ -134,10 +134,107 @@
   lbPrevBtn?.addEventListener("click", () => showLightbox(lightboxIndex - 1));
   lbNextBtn?.addEventListener("click", () => showLightbox(lightboxIndex + 1));
 
+  /* Compartilhar */
+  const SHARE_TITLE = "Isabelle Oliveira — Arquitetura & Design de Interiores";
+  const SHARE_TEXT =
+    "Conheci projetos lindos de arquitetura e design de interiores que transformam qualquer espaço em um lar acolhedor. Se você sonha em renovar sua casa, vale conhecer a Isabelle Oliveira!";
+
+  const shareModal = document.getElementById("share-modal");
+  const shareMessageEl = document.getElementById("share-message");
+  const shareUrlEl = document.getElementById("share-url");
+  const shareFeedback = document.getElementById("share-feedback");
+
+  function getSharePayload() {
+    const url = window.location.href;
+    const fullText = `${SHARE_TEXT}\n\n${url}`;
+    return { url, fullText };
+  }
+
+  function openShareModal() {
+    if (!shareModal) return;
+    const { url, fullText } = getSharePayload();
+    if (shareMessageEl) shareMessageEl.textContent = SHARE_TEXT;
+    if (shareUrlEl) shareUrlEl.textContent = url;
+    shareModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    if (shareFeedback) shareFeedback.textContent = "";
+    shareModal.querySelector(".share-modal__close")?.focus();
+  }
+
+  function closeShareModal() {
+    if (!shareModal) return;
+    shareModal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  }
+
+  function showShareFeedback(msg) {
+    if (shareFeedback) shareFeedback.textContent = msg;
+  }
+
+  async function shareSite() {
+    const { url, fullText } = getSharePayload();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: SHARE_TITLE,
+          text: SHARE_TEXT,
+          url,
+        });
+        return;
+      } catch (err) {
+        if (err.name === "AbortError") return;
+      }
+    }
+    openShareModal();
+  }
+
+  document.querySelectorAll("[data-share]").forEach((btn) => {
+    btn.addEventListener("click", shareSite);
+  });
+
+  document.getElementById("share-copy-full")?.addEventListener("click", async () => {
+    try {
+      await copyText(getSharePayload().fullText);
+      showShareFeedback("Mensagem copiada! Cole no WhatsApp ou redes sociais.");
+    } catch {
+      showShareFeedback("Não foi possível copiar. Selecione o texto manualmente.");
+    }
+  });
+
+  document.getElementById("share-copy-link")?.addEventListener("click", async () => {
+    try {
+      await copyText(getSharePayload().url);
+      showShareFeedback("Link copiado!");
+    } catch {
+      showShareFeedback("Não foi possível copiar o link.");
+    }
+  });
+
+  shareModal?.querySelectorAll("[data-share-close]").forEach((el) => {
+    el.addEventListener("click", closeShareModal);
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeModal();
       closeLightbox();
+      closeShareModal();
     }
     if (lightbox?.classList.contains("active")) {
       if (e.key === "ArrowLeft") showLightbox(lightboxIndex - 1);

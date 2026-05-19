@@ -289,6 +289,24 @@ img {
   color: var(--copper);
 }
 
+.folder-contact__item--whatsapp {
+  cursor: default;
+}
+
+.folder-contact__item--whatsapp:hover {
+  transform: none;
+  color: inherit;
+}
+
+.folder-contact__icon-link {
+  display: block;
+  transition: transform var(--transition);
+}
+
+.folder-contact__icon-link:hover {
+  transform: scale(1.1);
+}
+
 .folder-contact__icon {
   width: 44px;
   height: 44px;
