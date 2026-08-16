@@ -234,6 +234,9 @@
   const WA_NUMBER = "559885375067";
   const quoteForm = document.getElementById("quote-form");
   const quoteStatus = document.getElementById("quote-status");
+  const briefingIntro = document.getElementById("briefing");
+  const quoteSection = document.getElementById("formulario");
+  const startBriefing = document.getElementById("start-briefing");
   const TIPO_ALIASES = {
     residencial: "Projeto residencial",
     interiores: "Design de interiores",
@@ -242,6 +245,30 @@
     "3d": "Imagens 3D",
     avaliacao: "Avaliação gratuita do ambiente",
   };
+
+  function showQuoteForm(options = {}) {
+    if (briefingIntro) briefingIntro.hidden = true;
+    if (quoteSection) quoteSection.hidden = false;
+    quoteSection?.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
+    if (options.scroll !== false) {
+      quoteSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function shouldSkipBriefing() {
+    const params = new URLSearchParams(window.location.search);
+    return Boolean(params.get("tipo")) || window.location.hash === "#formulario";
+  }
+
+  startBriefing?.addEventListener("click", (e) => {
+    e.preventDefault();
+    history.replaceState(null, "", "#formulario");
+    showQuoteForm();
+  });
+
+  if (quoteSection && shouldSkipBriefing()) {
+    showQuoteForm({ scroll: false });
+  }
 
   function setQuoteError(name, message) {
     const el = quoteForm?.querySelector(`[data-error-for="${name}"]`);
