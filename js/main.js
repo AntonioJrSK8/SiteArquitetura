@@ -290,7 +290,6 @@
 
   function buildQuoteMessage(form) {
     const data = new FormData(form);
-    const ambientes = data.getAll("ambientes");
     const lines = [
       "Olá Isabelle, gostaria de solicitar um orçamento de projeto.",
       "",
@@ -298,12 +297,10 @@
       `WhatsApp: ${data.get("telefone") || "—"}`,
       `Tipo de projeto: ${data.get("tipo") || "—"}`,
     ];
-    if (data.get("local")) lines.push(`Cidade / bairro: ${data.get("local")}`);
-    if (data.get("imovel")) lines.push(`Imóvel: ${data.get("imovel")}`);
-    if (data.get("area")) lines.push(`Área aproximada: ${data.get("area")}`);
-    if (data.get("prazo")) lines.push(`Prazo: ${data.get("prazo")}`);
-    if (ambientes.length) lines.push(`Ambientes: ${ambientes.join(", ")}`);
-    lines.push("", "Sobre o projeto:", data.get("mensagem") || "—");
+    const mensagem = (data.get("mensagem") || "").trim();
+    if (mensagem) {
+      lines.push("", "Sobre o projeto:", mensagem);
+    }
     return lines.join("\n");
   }
 
@@ -329,9 +326,6 @@
     } else if (!quoteForm.telefone.value.trim()) {
       quoteForm.telefone.reportValidity();
       valid = false;
-    } else if (!quoteForm.mensagem.value.trim()) {
-      quoteForm.mensagem.reportValidity();
-      valid = false;
     }
     if (!consentimento?.checked) {
       setQuoteError("consentimento", "Confirme o consentimento para enviar.");
@@ -340,9 +334,16 @@
     if (!valid) return;
 
     const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(buildQuoteMessage(quoteForm))}`;
-    window.open(url, "_blank", "noopener");
-    if (quoteStatus) {
-      quoteStatus.textContent = "WhatsApp aberto. Confira a mensagem e envie quando estiver pronta.";
+    const openWhatsApp = () => {
+      window.open(url, "_blank", "noopener");
+      if (quoteStatus) {
+        quoteStatus.textContent = "WhatsApp aberto. Confira a mensagem e envie quando estiver pronta.";
+      }
+    };
+    if (typeof window.trackQuoteLead === "function") {
+      window.trackQuoteLead(openWhatsApp);
+    } else {
+      openWhatsApp();
     }
   });
 

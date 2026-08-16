@@ -45,7 +45,7 @@
         <a href="index.html#portfolio">Portfólio</a>
         <a href="index.html#galeria">Galeria</a>
         <a href="index.html#videos">Vídeos</a>
-        <a href="folder.html">Folder</a>
+        <a href="faq.html">FAQ</a>
         <a href="orcamento.html" class="nav__cta" aria-current="page">Orçamento</a>
       </nav>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" type="button">
@@ -87,8 +87,7 @@
         <p class="section__label">Briefing</p>
         <h2 class="section__title quote__form-heading">Conte sobre o seu espaço</h2>
         <p class="section__intro">
-          Escolha o tipo de projeto e compartilhe as informações do imóvel.
-          A solicitação segue pelo WhatsApp, sem compromisso.
+          Tipo de projeto, seu nome e WhatsApp. O restante a gente combina na conversa.
         </p>
       </div>
       <div class="container quote__layout">
@@ -105,8 +104,8 @@
             <li>
               <span>2</span>
               <div>
-                <strong>Conte sobre o espaço</strong>
-                <p>Ambientes, metragem e o que você imagina para o lugar.</p>
+                <strong>Envie nome e WhatsApp</strong>
+                <p>Se quiser, conte em uma frase o que imagina para o espaço.</p>
               </div>
             </li>
             <li>
@@ -181,53 +180,11 @@
               <span>WhatsApp</span>
               <input type="tel" name="telefone" autocomplete="tel" required inputmode="tel" maxlength="20" placeholder="(98) 00000-0000">
             </label>
-            <label class="quote-field">
-              <span>Cidade / bairro</span>
-              <input type="text" name="local" autocomplete="address-level2" maxlength="80" placeholder="São Luís — bairro">
-            </label>
-            <label class="quote-field">
-              <span>Tipo de imóvel</span>
-              <select name="imovel">
-                <option value="">Selecione</option>
-                <option value="Casa">Casa</option>
-                <option value="Apartamento">Apartamento</option>
-                <option value="Studio">Studio</option>
-                <option value="Comercial">Comercial</option>
-                <option value="Outro">Outro</option>
-              </select>
-            </label>
-            <label class="quote-field">
-              <span>Área aproximada</span>
-              <input type="text" name="area" inputmode="numeric" maxlength="20" placeholder="Ex.: 80 m²">
-            </label>
-            <label class="quote-field">
-              <span>Prazo desejado</span>
-              <select name="prazo">
-                <option value="">Selecione</option>
-                <option value="O quanto antes">O quanto antes</option>
-                <option value="1 a 3 meses">1 a 3 meses</option>
-                <option value="3 a 6 meses">3 a 6 meses</option>
-                <option value="Ainda estou pesquisando">Ainda estou pesquisando</option>
-              </select>
-            </label>
           </div>
 
-          <fieldset class="quote-form__fieldset">
-            <legend>Ambientes (opcional)</legend>
-            <div class="quote-checks">
-              <label><input type="checkbox" name="ambientes" value="Sala"> Sala</label>
-              <label><input type="checkbox" name="ambientes" value="Cozinha"> Cozinha</label>
-              <label><input type="checkbox" name="ambientes" value="Quartos"> Quartos</label>
-              <label><input type="checkbox" name="ambientes" value="Banheiros"> Banheiros</label>
-              <label><input type="checkbox" name="ambientes" value="Área gourmet"> Área gourmet</label>
-              <label><input type="checkbox" name="ambientes" value="Área externa"> Área externa</label>
-              <label><input type="checkbox" name="ambientes" value="Projeto completo"> Projeto completo</label>
-            </div>
-          </fieldset>
-
           <label class="quote-field">
-            <span>Conte sobre o projeto</span>
-            <textarea name="mensagem" rows="5" required maxlength="800" placeholder="O que você gostaria de transformar? Estilo, necessidades da família, referências…"></textarea>
+            <span>O que você precisa? <em>(opcional)</em></span>
+            <textarea name="mensagem" rows="3" maxlength="400" placeholder="Ex.: gourmet no Calhau, apartamento pequeno, imagens 3D…"></textarea>
           </label>
 
           <label class="quote-consent">
@@ -252,8 +209,9 @@
         Arquitetura que <strong>inspira</strong>. Detalhes que <strong>transformam</strong>.
       </p>
       <p class="footer__copy">© 2026 Isabelle Oliveira — Projetos residenciais · Arquitetura de interiores e design de interiores</p>
-      <nav class="footer__links" aria-label="Links legais">
+      <nav class="footer__links" aria-label="Links do site">
         <a href="index.html">Início</a>
+        <a href="faq.html">Dúvidas frequentes</a>
         <a href="privacidade.html">Política de privacidade</a>
       </nav>
     </div>
@@ -264,6 +222,7 @@
     <span class="whatsapp-float__text">Falar no WhatsApp</span>
   </a>
 
+  <script src="js/analytics.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
