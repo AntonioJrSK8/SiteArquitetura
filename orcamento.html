@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicite orçamento de projeto residencial, arquitetura de interiores ou design de interiores em São Luís, MA. Sem compromisso.">
+  <meta name="keywords" content="orçamento arquitetura, projeto de interiores, design de interiores São Luís, solicitar projeto">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Isabelle Oliveira">
+  <title>Solicitar orçamento | Isabelle Oliveira — Arquitetura e Design</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Solicitar orçamento — Isabelle Oliveira Arquitetura">
+  <meta property="og:description" content="Conte sobre o seu espaço e receba uma proposta de projeto residencial ou design de interiores.">
+  <meta property="og:image" content="imagens/015.jpeg">
+  <meta property="og:locale" content="pt_BR">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header scrolled">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        Isabelle Oliveira
+        <span>Arquitetura & Design</span>
+      </a>
+      <nav class="nav" aria-label="Menu principal">
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#portfolio">Portfólio</a>
+        <a href="index.html#galeria">Galeria</a>
+        <a href="index.html#videos">Vídeos</a>
+        <a href="folder.html">Folder</a>
+        <a href="orcamento.html" class="nav__cta" aria-current="page">Orçamento</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="quote-hero container">
+      <p class="section__label reveal">Orçamento</p>
+      <p class="quote-hero__script reveal">O primeiro passo do seu espaço</p>
+      <h1 class="quote-hero__title reveal">Solicite seu <em>projeto</em></h1>
+      <p class="quote-hero__text reveal">
+        Escolha o tipo de projeto, conte sobre o ambiente e envie a solicitação pelo WhatsApp.
+        A proposta é personalizada e <strong>sem compromisso</strong>.
+      </p>
+    </section>
+
+    <section class="section quote" aria-labelledby="quote-form-title">
+      <div class="container quote__layout">
+        <aside class="quote__aside reveal">
+          <h2 id="quote-form-title" class="quote__aside-title">Como funciona</h2>
+          <ol class="quote__steps">
+            <li>
+              <span>1</span>
+              <div>
+                <strong>Escolha o projeto</strong>
+                <p>Residencial, interiores, gourmet, comercial ou avaliação gratuita.</p>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <strong>Conte sobre o espaço</strong>
+                <p>Ambientes, metragem e o que você imagina para o lugar.</p>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <strong>Receba o orçamento</strong>
+                <p>A solicitação abre no WhatsApp para a Isabelle retornar com a proposta.</p>
+              </div>
+            </li>
+          </ol>
+          <p class="quote__aside-note">
+            Os dados não ficam salvos no site: você revisa a mensagem no WhatsApp antes de enviar.
+          </p>
+        </aside>
+
+        <form class="quote-form reveal" id="quote-form" novalidate>
+          <fieldset class="quote-form__fieldset">
+            <legend>Tipo de projeto</legend>
+            <div class="quote-types" role="radiogroup" aria-label="Tipo de projeto">
+              <label class="quote-type">
+                <input type="radio" name="tipo" value="Projeto residencial" required>
+                <span class="quote-type__card">
+                  <strong>Residencial</strong>
+                  <em>Casas e apartamentos</em>
+                </span>
+              </label>
+              <label class="quote-type">
+                <input type="radio" name="tipo" value="Design de interiores">
+                <span class="quote-type__card">
+                  <strong>Interiores</strong>
+                  <em>Ambientes e mobiliário</em>
+                </span>
+              </label>
+              <label class="quote-type">
+                <input type="radio" name="tipo" value="Área gourmet e lazer">
+                <span class="quote-type__card">
+                  <strong>Gourmet &amp; lazer</strong>
+                  <em>Área externa e convivência</em>
+                </span>
+              </label>
+              <label class="quote-type">
+                <input type="radio" name="tipo" value="Projeto comercial">
+                <span class="quote-type__card">
+                  <strong>Comercial</strong>
+                  <em>Lojas, clínicas e espaços</em>
+                </span>
+              </label>
+              <label class="quote-type">
+                <input type="radio" name="tipo" value="Imagens 3D">
+                <span class="quote-type__card">
+                  <strong>Imagens 3D</strong>
+                  <em>Renders e visualização</em>
+                </span>
+              </label>
+              <label class="quote-type">
+                <input type="radio" name="tipo" value="Avaliação gratuita do ambiente">
+                <span class="quote-type__card">
+                  <strong>Avaliação grátis</strong>
+                  <em>Análise sem compromisso</em>
+                </span>
+              </label>
+            </div>
+            <p class="quote-form__error" data-error-for="tipo" hidden>Escolha o tipo de projeto.</p>
+          </fieldset>
+
+          <div class="quote-form__grid">
+            <label class="quote-field">
+              <span>Nome</span>
+              <input type="text" name="nome" autocomplete="name" required maxlength="80" placeholder="Seu nome">
+            </label>
+            <label class="quote-field">
+              <span>WhatsApp</span>
+              <input type="tel" name="telefone" autocomplete="tel" required inputmode="tel" maxlength="20" placeholder="(98) 00000-0000">
+            </label>
+            <label class="quote-field">
+              <span>Cidade / bairro</span>
+              <input type="text" name="local" autocomplete="address-level2" maxlength="80" placeholder="São Luís — bairro">
+            </label>
+            <label class="quote-field">
+              <span>Tipo de imóvel</span>
+              <select name="imovel">
+                <option value="">Selecione</option>
+                <option value="Casa">Casa</option>
+                <option value="Apartamento">Apartamento</option>
+                <option value="Studio">Studio</option>
+                <option value="Comercial">Comercial</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </label>
+            <label class="quote-field">
+              <span>Área aproximada</span>
+              <input type="text" name="area" inputmode="numeric" maxlength="20" placeholder="Ex.: 80 m²">
+            </label>
+            <label class="quote-field">
+              <span>Prazo desejado</span>
+              <select name="prazo">
+                <option value="">Selecione</option>
+                <option value="O quanto antes">O quanto antes</option>
+                <option value="1 a 3 meses">1 a 3 meses</option>
+                <option value="3 a 6 meses">3 a 6 meses</option>
+                <option value="Ainda estou pesquisando">Ainda estou pesquisando</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset class="quote-form__fieldset">
+            <legend>Ambientes (opcional)</legend>
+            <div class="quote-checks">
+              <label><input type="checkbox" name="ambientes" value="Sala"> Sala</label>
+              <label><input type="checkbox" name="ambientes" value="Cozinha"> Cozinha</label>
+              <label><input type="checkbox" name="ambientes" value="Quartos"> Quartos</label>
+              <label><input type="checkbox" name="ambientes" value="Banheiros"> Banheiros</label>
+              <label><input type="checkbox" name="ambientes" value="Área gourmet"> Área gourmet</label>
+              <label><input type="checkbox" name="ambientes" value="Área externa"> Área externa</label>
+              <label><input type="checkbox" name="ambientes" value="Projeto completo"> Projeto completo</label>
+            </div>
+          </fieldset>
+
+          <label class="quote-field">
+            <span>Conte sobre o projeto</span>
+            <textarea name="mensagem" rows="5" required maxlength="800" placeholder="O que você gostaria de transformar? Estilo, necessidades da família, referências…"></textarea>
+          </label>
+
+          <label class="quote-consent">
+            <input type="checkbox" name="consentimento" required>
+            <span>Autorizo o uso dos dados desta solicitação para elaborar o orçamento, conforme a <a href="privacidade.html">política de privacidade</a>.</span>
+          </label>
+          <p class="quote-form__error" data-error-for="consentimento" hidden>Confirme o consentimento para enviar.</p>
+
+          <div class="quote-form__actions">
+            <button type="submit" class="btn btn--primary quote-form__submit">Enviar pelo WhatsApp</button>
+            <p class="quote-form__hint">A mensagem será aberta no WhatsApp para você conferir e enviar.</p>
+          </div>
+          <p class="quote-form__status" id="quote-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__tagline">
+        Arquitetura que <strong>inspira</strong>. Detalhes que <strong>transformam</strong>.
+      </p>
+      <p class="footer__copy">© 2026 Isabelle Oliveira — Projetos residenciais · Arquitetura de interiores e design de interiores</p>
+      <nav class="footer__links" aria-label="Links legais">
+        <a href="index.html">Início</a>
+        <a href="privacidade.html">Política de privacidade</a>
+      </nav>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/559885375067" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="whatsapp-float__text">Falar no WhatsApp</span>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

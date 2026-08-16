@@ -230,6 +230,95 @@
     el.addEventListener("click", closeShareModal);
   });
 
+  /* Formulário de orçamento */
+  const WA_NUMBER = "559885375067";
+  const quoteForm = document.getElementById("quote-form");
+  const quoteStatus = document.getElementById("quote-status");
+  const TIPO_ALIASES = {
+    residencial: "Projeto residencial",
+    interiores: "Design de interiores",
+    gourmet: "Área gourmet e lazer",
+    comercial: "Projeto comercial",
+    "3d": "Imagens 3D",
+    avaliacao: "Avaliação gratuita do ambiente",
+  };
+
+  function setQuoteError(name, message) {
+    const el = quoteForm?.querySelector(`[data-error-for="${name}"]`);
+    if (!el) return;
+    el.hidden = !message;
+    el.textContent = message || "";
+  }
+
+  function preselectQuoteType() {
+    if (!quoteForm) return;
+    const tipo = new URLSearchParams(window.location.search).get("tipo");
+    const value = TIPO_ALIASES[tipo] || tipo;
+    if (!value) return;
+    const radio = [...quoteForm.querySelectorAll('input[name="tipo"]')].find(
+      (input) => input.value === value
+    );
+    if (radio) radio.checked = true;
+  }
+
+  function buildQuoteMessage(form) {
+    const data = new FormData(form);
+    const ambientes = data.getAll("ambientes");
+    const lines = [
+      "Olá Isabelle, gostaria de solicitar um orçamento de projeto.",
+      "",
+      `Nome: ${data.get("nome") || "—"}`,
+      `WhatsApp: ${data.get("telefone") || "—"}`,
+      `Tipo de projeto: ${data.get("tipo") || "—"}`,
+    ];
+    if (data.get("local")) lines.push(`Cidade / bairro: ${data.get("local")}`);
+    if (data.get("imovel")) lines.push(`Imóvel: ${data.get("imovel")}`);
+    if (data.get("area")) lines.push(`Área aproximada: ${data.get("area")}`);
+    if (data.get("prazo")) lines.push(`Prazo: ${data.get("prazo")}`);
+    if (ambientes.length) lines.push(`Ambientes: ${ambientes.join(", ")}`);
+    lines.push("", "Sobre o projeto:", data.get("mensagem") || "—");
+    return lines.join("\n");
+  }
+
+  preselectQuoteType();
+
+  quoteForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    setQuoteError("tipo", "");
+    setQuoteError("consentimento", "");
+    if (quoteStatus) quoteStatus.textContent = "";
+
+    const tipo = quoteForm.querySelector('input[name="tipo"]:checked');
+    const consentimento = quoteForm.querySelector('input[name="consentimento"]');
+    let valid = true;
+
+    if (!tipo) {
+      setQuoteError("tipo", "Escolha o tipo de projeto.");
+      valid = false;
+    }
+    if (!quoteForm.nome.value.trim()) {
+      quoteForm.nome.reportValidity();
+      valid = false;
+    } else if (!quoteForm.telefone.value.trim()) {
+      quoteForm.telefone.reportValidity();
+      valid = false;
+    } else if (!quoteForm.mensagem.value.trim()) {
+      quoteForm.mensagem.reportValidity();
+      valid = false;
+    }
+    if (!consentimento?.checked) {
+      setQuoteError("consentimento", "Confirme o consentimento para enviar.");
+      valid = false;
+    }
+    if (!valid) return;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(buildQuoteMessage(quoteForm))}`;
+    window.open(url, "_blank", "noopener");
+    if (quoteStatus) {
+      quoteStatus.textContent = "WhatsApp aberto. Confira a mensagem e envie quando estiver pronta.";
+    }
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeModal();

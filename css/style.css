@@ -105,7 +105,7 @@ ul {
 .nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .nav a {
@@ -1180,6 +1180,366 @@ ul {
   color: var(--cream);
 }
 
+/* —— Menu de orçamento (home) —— */
+.quote-menu {
+  padding-top: 0;
+}
+
+.quote-menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.quote-menu__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--white);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.quote-menu__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--copper-light);
+}
+
+.quote-menu__card span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.quote-menu__card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.quote-menu__card p {
+  font-size: 0.9rem;
+  color: var(--slate);
+  flex: 1;
+}
+
+.quote-menu__card em {
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+/* —— Página / formulário de orçamento —— */
+.quote-hero {
+  padding: 8rem 0 2rem;
+  text-align: center;
+}
+
+.quote-hero__script {
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--copper);
+  margin-bottom: 0.5rem;
+}
+
+.quote-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.quote-hero__title em {
+  font-style: italic;
+  color: var(--copper);
+}
+
+.quote-hero__text {
+  max-width: 38rem;
+  margin-inline: auto;
+  color: var(--slate);
+}
+
+.quote-hero__text strong {
+  color: var(--charcoal);
+}
+
+.quote {
+  padding-top: 2rem;
+}
+
+.quote__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.quote__aside {
+  padding: 2rem 1.75rem;
+  background: var(--charcoal);
+  color: var(--cream);
+  border-radius: 24px;
+}
+
+.quote__aside-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.quote__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.quote__steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.quote__steps span {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--copper);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote__steps strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.quote__steps p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(242, 239, 233, 0.8);
+}
+
+.quote__aside-note {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(242, 239, 233, 0.7);
+}
+
+.quote-form {
+  background: var(--white);
+  padding: 2rem 1.75rem 2.25rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.quote-form__fieldset {
+  border: 0;
+  margin-bottom: 1.5rem;
+}
+
+.quote-form__fieldset legend,
+.quote-field > span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+}
+
+.quote-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.quote-type {
+  cursor: pointer;
+}
+
+.quote-type input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quote-type__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 100%;
+  padding: 0.9rem 0.8rem;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 12px;
+  background: var(--cream);
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.quote-type__card strong {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.quote-type__card em {
+  font-style: normal;
+  font-size: 0.72rem;
+  color: var(--slate);
+  line-height: 1.35;
+}
+
+.quote-type:hover .quote-type__card,
+.quote-type input:focus-visible + .quote-type__card {
+  border-color: var(--copper);
+}
+
+.quote-type input:checked + .quote-type__card {
+  border-color: var(--copper);
+  background: #f7f1ea;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.18);
+}
+
+.quote-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.quote-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  background: var(--cream);
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 12px;
+  padding: 0.8rem 0.95rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.quote-field textarea {
+  resize: vertical;
+  min-height: 8rem;
+  margin-bottom: 1.25rem;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+  outline: none;
+  border-color: var(--copper);
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.16);
+  background: var(--white);
+}
+
+.quote-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.quote-checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--charcoal-soft);
+  background: var(--cream);
+  border: 1px solid var(--cream-dark);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+}
+
+.quote-checks input {
+  accent-color: var(--copper);
+}
+
+.quote-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--slate);
+  margin-bottom: 1.25rem;
+}
+
+.quote-consent input {
+  margin-top: 0.2rem;
+  accent-color: var(--copper);
+}
+
+.quote-consent a {
+  color: var(--copper);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.quote-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quote-form__hint {
+  font-size: 0.8rem;
+  color: var(--slate);
+  max-width: 18rem;
+}
+
+.quote-form__error {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9b3d2e;
+}
+
+.quote-form__status {
+  min-height: 1.25rem;
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--copper);
+}
+
+.quote-form.is-invalid .quote-type__card {
+  border-color: #e0cfc3;
+}
+
 /* —— Footer —— */
 .footer {
   padding: 2rem 0;
@@ -1207,6 +1567,10 @@ ul {
 
 .footer__links {
   margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
 }
 
 .footer__links a {
@@ -1648,6 +2012,16 @@ ul {
 }
 
 /* —— Responsive —— */
+@media (max-width: 1200px) {
+  .nav {
+    gap: 1.1rem;
+  }
+
+  .nav a {
+    font-size: 0.72rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
@@ -1744,6 +2118,13 @@ ul {
   .about {
     grid-template-columns: 1fr;
   }
+
+  .quote-menu__grid,
+  .quote__layout,
+  .quote-form__grid,
+  .quote-types {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1761,6 +2142,10 @@ ul {
 
   .nav.open {
     transform: translateX(0);
+  }
+
+  .nav a {
+    font-size: 0.9rem;
   }
 
   .menu-toggle {
@@ -1804,8 +2189,22 @@ ul {
 
   .services__grid,
   .portfolio__grid,
-  .contact__grid {
+  .contact__grid,
+  .quote-menu__grid,
+  .quote__layout,
+  .quote-form__grid,
+  .quote-types {
     grid-template-columns: 1fr;
+  }
+
+  .quote-hero {
+    padding-top: 7rem;
+    text-align: left;
+  }
+
+  .quote-form,
+  .quote__aside {
+    padding: 1.5rem 1.25rem;
   }
 
   .gallery__grid {
